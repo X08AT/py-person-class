@@ -10,15 +10,14 @@ class Person:
 def create_person_list(people: list) -> list:
     person_list = []
 
-    for entity in people:
-        human = Person(entity["name"], entity["age"])
-        person_list.append(human)
+    [person_list.append(Person(entity["name"], entity["age"]))
+     for entity in people]
 
     for entity in people:
         human = Person.people[entity["name"]]
-        if "wife" in entity and entity["wife"] is not None:
+        if entity.get("wife"):
             human.wife = Person.people[entity["wife"]]
-        if "husband" in entity and entity["husband"] is not None:
+        if entity.get("husband"):
             human.husband = Person.people[entity["husband"]]
 
     return person_list
