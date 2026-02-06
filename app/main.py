@@ -8,10 +8,7 @@ class Person:
 
 
 def create_person_list(people: list) -> list:
-    person_list = []
-
-    [person_list.append(Person(entity["name"], entity["age"]))
-     for entity in people]
+    person_list = [Person(entity["name"], entity["age"]) for entity in people]
 
     for entity in people:
         human = Person.people[entity["name"]]
